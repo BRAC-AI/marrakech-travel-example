@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marrakech Travel Handbook</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f5f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #e74c3c;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1548784764-1b383a0586b7');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .header-content {
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #c0392b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0;
+        }
+        
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #a93226;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        h2 {
+            color: #c0392b;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        h3 {
+            color: #e74c3c;
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            color: #7d3c98;
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Itinerary Styles */
+        .day {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .day-header {
+            background-color: #c0392b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .activity {
+            border-left: 3px solid #e74c3c;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* Accommodation Styles */
+        .accommodation {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Phrases Table */
+        .phrases-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .phrases-table th, .phrases-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .phrases-table th {
+            background-color: #c0392b;
+            color: white;
+        }
+        
+        .phrases-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Tips Styles */
+        .tip-box {
+            background-color: #fdebd0;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Map Container */
+        .map-container {
+            height: 400px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Proposal Spots */
+        .proposal-spot {
+            background-color: #f8d7da;
+            border-left: 5px solid #e83e8c;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Marrakech Travel Handbook</h1>
+            <p>Your complete guide to a romantic 3-day adventure</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#accommodations">Accommodations</a></li>
+            <li><a href="#attractions">Attractions</a></li>
+            <li><a href="#proposal">Proposal Spots</a></li>
+            <li><a href="#phrases">Essential Phrases</a></li>
+            <li><a href="#tips">Travel Tips</a></li>
+            <li><a href="#maps">Maps</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="itinerary">
+            <h2>3-Day Itinerary</h2>
+            
+            <div class="day">
+                <div class="day-header">
+                    <h3>Day 1: Exploring the Medina and Historical Sites</h3>
+                </div>
+                
+                <div class="activity">
+                    <h4>Morning: Arrival and Check-in at Riad Elegancia</h4>
+                    <ul>
+                        <li>Arrive at Riad Elegancia and enjoy a traditional Moroccan welcome with mint tea</li>
+                        <li>Settle into your room and freshen up</li>
+                        <li>Enjoy breakfast at the riad if arrival is early morning</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Late Morning: Jemaa el-Fnaa and the Souks</h4>
+                    <ul>
+                        <li>Begin your exploration at Jemaa el-Fnaa, the main square and heart of Marrakech</li>
+                        <li>Wander through the vibrant souks (markets) surrounding the square</li>
+                        <li>Experience the colors, scents, and sounds of the medina</li>
+                        <li>Practice your haggling skills for small souvenirs</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Lunch: Traditional Moroccan Cuisine</h4>
+                    <ul>
+                        <li>Enjoy lunch at a rooftop restaurant overlooking Jemaa el-Fnaa</li>
+                        <li>Try traditional Moroccan dishes like tagine or couscous</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Afternoon: Historical Monuments</h4>
+                    <ul>
+                        <li>Visit the iconic Koutoubia Mosque (exterior only as non-Muslims cannot enter)</li>
+                        <li>Explore the stunning Bahia Palace with its beautiful gardens and intricate architecture</li>
+                        <li>Visit the nearby El Badi Palace ruins to learn about Morocco's royal history</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Evening: Dinner and Night Experience</h4>
+                    <ul>
+                        <li>Return to Riad Elegancia to relax and refresh</li>
+                        <li>Dinner at the riad's restaurant featuring authentic Moroccan cuisine</li>
+                        <li>Optional evening walk back to Jemaa el-Fnaa to experience the square's transformation into a night market with food stalls, performers, and storytellers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day">
+                <div class="day-header">
+                    <h3>Day 2: Gardens, Culture, and Cooking</h3>
+                </div>
+                
+                <div class="activity">
+                    <h4>Morning: Jardin Majorelle and Yves Saint Laurent Museum</h4>
+                    <ul>
+                        <li>After breakfast at Riad Elegancia, check out and transfer luggage to La Maison Arabe</li>
+                        <li>Visit the stunning Jardin Majorelle, the vibrant blue garden created by Jacques Majorelle and later owned by Yves Saint Laurent</li>
+                        <li>Explore the Yves Saint Laurent Museum next door</li>
+                        <li>Visit the nearby Menara Gardens for a peaceful stroll</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Lunch: Light Lunch in the New City</h4>
+                    <ul>
+                        <li>Enjoy lunch in the modern Gueliz district, experiencing a different side of Marrakech</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Afternoon: Cooking Class at La Maison Arabe</h4>
+                    <ul>
+                        <li>Check in to La Maison Arabe</li>
+                        <li>Participate in a traditional Moroccan cooking class at La Maison Arabe's renowned cooking school</li>
+                        <li>Learn to prepare authentic Moroccan dishes with a professional dada (traditional cook)</li>
+                        <li>Enjoy the fruits of your labor for an early dinner</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Evening: Relaxation and Romance</h4>
+                    <ul>
+                        <li>Indulge in a couples hammam and massage treatment at La Maison Arabe's spa</li>
+                        <li>Enjoy a romantic drink on your private balcony or terrace under the stars</li>
+                        <li>Option to visit a local music venue to experience traditional Moroccan music</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day">
+                <div class="day-header">
+                    <h3>Day 3: Cultural Immersion and Romantic Proposal</h3>
+                </div>
+                
+                <div class="activity">
+                    <h4>Morning: Ben Youssef Madrasa and Marrakech Museum</h4>
+                    <ul>
+                        <li>After breakfast at La Maison Arabe, visit the beautifully restored Ben Youssef Madrasa, an ancient Islamic school</li>
+                        <li>Explore the nearby Marrakech Museum housed in the Dar Menebhi Palace</li>
+                        <li>Visit the Saadian Tombs, a historic royal necropolis</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Lunch: Elegant Dining</h4>
+                    <ul>
+                        <li>Return to La Maison Arabe for lunch at their renowned restaurant</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Afternoon: Secret Garden and Free Time</h4>
+                    <ul>
+                        <li>Visit Le Jardin Secret (The Secret Garden), a hidden gem in the medina</li>
+                        <li>Enjoy some free time for last-minute shopping in the souks or relaxing at the hotel</li>
+                        <li>Option to visit La Maison Arabe's Country Club in the Palmeraie for a serene escape from the city</li>
+                    </ul>
+                </div>
+                
+                <div class="activity">
+                    <h4>Evening: Sunset Proposal and Celebration Dinner</h4>
+                    <ul>
+                        <li><strong>Special Romantic Proposal Experience</strong>: Sunset visit to the rooftop terrace of La Maison Arabe or a private dinner in a secluded courtyard garden, perfect for the proposal moment</li>
+                        <li>Celebration dinner at one of Marrakech's finest restaurants</li>
+                        <li>Toast to your engagement with a special Moroccan dessert</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day">
+                <h3>Additional Activities (Time Permitting)</h3>
+                <ul>
+                    <li>Hot air balloon ride over Marrakech at sunrise</li>
+                    <li>Day trip to the Atlas Mountains</li>
+                    <li>Visit to a traditional hammam</li>
+                    <li>Camel ride in the Palmeraie</li>
+                    <li>Shopping for artisanal crafts with a guide who can help navigate the best shops</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="accommodations">
+            <h2>Your Accommodations</h2>
+            
+            <div class="accommodation">
+                <h3>Riad Elegancia</h3>
+                <p>An enchanting luxury riad hotel in the heart of the Marrakech medina, only a 3-minute walk from La Maison Arabe.</p>
+                
+                <h4>Highlights:</h4>
+                <ul>
+                    <li>11 spacious rooms set around two interior patios illuminated by magnificent chandeliers</li>
+                    <li>Each individually styled room is distinguished by a different decorative ceiling</li>
+                    <li>Modern ensuite bathrooms with Italian showers or bathtubs</li>
+                    <li>Espace Raha spa offering traditional hammam and rejuvenating massage treatments</li>
+                    <li>Authentic Moroccan cuisine with a modern twist</li>
+                    <li>Rooftop with 360° views of the ancient Medina, swimming pool, and restaurant area</li>
+                </ul>
+                
+                <h4>Perfect for:</h4>
+                <p>Your first night in Marrakech, immersing yourself in the traditional riad experience with modern luxury touches.</p>
+            </div>
+            
+            <div class="accommodation">
+                <h3>La Maison Arabe</h3>
+                <p>A legendary luxury riad-hotel with a rich history dating back to 1946 when it became the first restaurant open to foreigners in the medina.</p>
+                
+                <h4>Highlights:</h4>
+                <ul>
+                    <li>45 king-size rooms and suites, each unique in layout and design</li>
+                    <li>Most rooms feature a fireplace and a private balcony or terrace</li>
+                    <li>Bathrooms crafted from Moroccan marble and granite</li>
+                    <li>Spectacular Moorish spa setting with two hammams</li>
+                    <li>Renowned cooking school offering authentic Moroccan cooking workshops</li>
+                    <li>Country Club located in the Palmeraie, a serene garden sanctuary</li>
+                </ul>
+                
+                <h4>Perfect for:</h4>
+                <p>Your romantic proposal night, with its elegant atmosphere, renowned dining, and private spaces perfect for intimate moments.</p>
+            </div>
+        </section>
+        
+        <section id="attractions">
+            <h2>Must-See Attractions</h2>
+            
+            <h3>Historical Sites and Monuments</h3>
+            <ul>
+                <li><strong>Jemaa el-Fnaa</strong> - Marrakech's main square and the most important part of the Medina. It has become the symbol of the city and is always full of life.</li>
+                <li><strong>Koutoubia Mosque</strong> - Marrakech's most important mosque and was one of the largest house of worships for followers of Islam when completed in 1158.</li>
+                <li><strong>Bahia Palace</strong> - One of the most beautiful palaces in Marrakech. It was built in the late nineteenth century and is a must-see attraction.</li>
+                <li><strong>Ben Youssef Madrasa</strong> - The largest and most important Islamic school in Morocco. It has over 130 rooms and housed over 900 students.</li>
+                <li><strong>Saadian Tombs</strong> - One of the most popular tourist sites in Marrakech. They were open to the public in 1917 when they were discovered.</li>
+                <li><strong>El Badi Palace</strong> - Built at the end of the sixteenth century to commemorate the victory of the Battle of the Three Kings against the Portuguese.</li>
+            </ul>
+            
+            <h3>Gardens and Natural Beauty</h3>
+            <ul>
+                <li><strong>Jardin Majorelle</strong> - The Jardin Majorelle was designed in 1924 by Jacques Majorelle, a French painter that settled in Marrakech in 1919. Known for its striking cobalt blue features and exotic plant collection.</li>
+                <li><strong>Menara Gardens</strong> - Marrakech's most popular landscaped garden located to the west of the medina, featuring a large pavilion and reflecting pool.</li>
+                <li><strong>Le Jardin Secret</strong> - A restored historic riad with beautiful Islamic gardens in the heart of the medina.</li>
+                <li><strong>Marrakech's Palm Grove</strong> - The palm grove of Marrakech has over 100,000 palm trees and is the ideal place to relax and get away from the chaotic medina.</li>
+            </ul>
+            
+            <h3>Museums and Cultural Sites</h3>
+            <ul>
+                <li><strong>Marrakech Museum</strong> - Housed in the Dar Menebhi Palace from the nineteenth century, featuring various collections of weapons, pottery and other objects.</li>
+                <li><strong>Dar Si Said</strong> - The Museum of Moroccan Arts, which features antiques, arms and some of the oldest objects in Marrakech.</li>
+                <li><strong>Yves Saint Laurent Museum</strong> - Located next to Jardin Majorelle, showcasing the work of the famous fashion designer who loved Marrakech.</li>
+            </ul>
+            
+            <h3>Cultural Experiences</h3>
+            <ul>
+                <li><strong>Cooking Classes</strong> - Learn to prepare regional dishes at a home in the medina in Marrakech. La Maison Arabe offers one of the most renowned cooking workshops in the city.</li>
+                <li><strong>Traditional Hammams</strong> - Experience traditional Moroccan bathhouses, which are an important part of Moroccan culture and daily life.</li>
+                <li><strong>Tea Ceremonies</strong> - Moroccan mint tea is a symbol of hospitality. Experience the proper way to prepare and serve it.</li>
+                <li><strong>Souks of Marrakech</strong> - The souks of Marrakech's medina are a maze of market stalls where the vibrant colors blend with the smell of spices and shouts of merchants.</li>
+            </ul>
+        </section>
+        
+        <section id="proposal">
+            <h2>Romantic Proposal Locations</h2>
+            
+            <div class="proposal-spot">
+                <h3>La Maison Arabe Rooftop</h3>
+                <p>The private rooftop terrace of La Maison Arabe offers a romantic setting with views of the medina and Atlas Mountains in the distance. Arrange with the hotel staff to set up a private dinner with candles and rose petals for the perfect proposal moment at sunset.</p>
+            </div>
+            
+            <div class="proposal-spot">
+                <h3>Jardin Majorelle</h3>
+                <p>This stunning botanical garden with vibrant blue buildings and exotic plants creates a dreamlike atmosphere perfect for a romantic proposal. Find a quiet corner among the bamboo groves or beside one of the fountains for an intimate moment.</p>
+            </div>
+            
+            <div class="proposal-spot">
+                <h3>The Secret Garden (Le Jardin Secret)</h3>
+                <p>A restored historic riad with beautiful Islamic gardens. The management might help arrange a special moment if notified in advance. The exotic garden with its pavilion offers a tranquil setting away from the bustle of the medina.</p>
+            </div>
+            
+            <div class="proposal-spot">
+                <h3>Hot Air Balloon Ride</h3>
+                <p>For a truly unforgettable proposal, consider a sunrise hot air balloon ride over Marrakech and the surrounding landscapes. The breathtaking views and serene atmosphere create a magical setting for your special moment.</p>
+            </div>
+            
+            <div class="proposal-spot">
+                <h3>Private Dinner in a Riad Courtyard</h3>
+                <p>Both Riad Elegancia and La Maison Arabe can arrange a private candlelit dinner in a secluded courtyard surrounded by traditional Moroccan architecture, flickering lanterns, and the gentle sound of fountains.</p>
+            </div>
+        </section>
+        
+        <section id="phrases">
+            <h2>Essential Phrases</h2>
+            
+            <h3>Greetings and Basic Expressions</h3>
+            <table class="phrases-table">
+                <tr>
+                    <th>English</th>
+                    <th>Arabic (Darija)</th>
+                    <th>French</th>
+                </tr>
+                <tr>
+                    <td>Hello/Peace be with you</td>
+                    <td>As-salaam Alaykum</td>
+                    <td>Bonjour</td>
+                </tr>
+                <tr>
+                    <td>Good morning</td>
+                    <td>Sbah l'kheir</td>
+                    <td>Bonjour</td>
+                </tr>
+                <tr>
+                    <td>Good evening</td>
+                    <td>Masa el kheir</td>
+                    <td>Bonsoir</td>
+                </tr>
+                <tr>
+                    <td>How are you?</td>
+                    <td>Labas?</td>
+                    <td>Comment allez-vous?</td>
+                </tr>
+                <tr>
+                    <td>I am fine</td>
+                    <td>Ana labas</td>
+                    <td>Je vais bien</td>
+                </tr>
+                <tr>
+                    <td>Thank you</td>
+                    <td>Choukran</td>
+                    <td>Merci</td>
+                </tr>
+                <tr>
+                    <td>Please</td>
+                    <td>Min fadlak</td>
+                    <td>S'il vous plaît</td>
+                </tr>
+                <tr>
+                    <td>Excuse me/Sorry</td>
+                    <td>Smahli</td>
+                    <td>Excusez-moi / Pardon</td>
+                </tr>
+                <tr>
+                    <td>Goodbye</td>
+                    <td>Bslama / Maa salama</td>
+                    <td>Au revoir</td>
+                </tr>
+            </table>
+            
+            <h3>Practical Phrases</h3>
+            <table class="phrases-table">
+                <tr>
+                    <th>English</th>
+                    <th>Arabic (Darija)</th>
+                    <th>French</th>
+                </tr>
+                <tr>
+                    <td>How much is this?</td>
+                    <td>B'chal hada?</td>
+                    <td>Combien ça coûte?</td>
+                </tr>
+                <tr>
+                    <td>Too expensive</td>
+                    <td>Ghali bezzaf</td>
+                    <td>C'est trop cher</td>
+                </tr>
+                <tr>
+                    <td>Where is...?</td>
+                    <td>Fin...?</td>
+                    <td>Où est...?</td>
+                </tr>
+                <tr>
+                    <td>I don't understand</td>
+                    <td>Ma fhemtsh</td>
+                    <td>Je ne comprends pas</td>
+                </tr>
+                <tr>
+                    <td>Do you speak English?</td>
+                    <td>Wash kat'kellem Engliziya?</td>
+                    <td>Parlez-vous anglais?</td>
+                </tr>
+                <tr>
+                    <td>This is delicious</td>
+                    <td>Hadshi bneen</td>
+                    <td>C'est délicieux</td>
+                </tr>
+            </table>
+        </section>
+        
+        <section id="tips">
+            <h2>Travel Tips and Etiquette</h2>
+            
+            <div class="tip-box">
+                <h3>Dress Code</h3>
+                <h4>For Women:</h4>
+                <ul>
+                    <li>Dress modestly to show respect for local customs and to avoid unwanted attention</li>
+                    <li>Cover shoulders and knees in public areas, especially when visiting religious sites</li>
+                    <li>Loose-fitting, flowing clothing is ideal (long dresses, wide-leg pants, tunics)</li>
+                    <li>Bring a light scarf to cover your head when visiting mosques</li>
+                    <li>More revealing clothing is acceptable at hotel pools and private resorts</li>
+                </ul>
+                
+                <h4>For Men:</h4>
+                <ul>
+                    <li>Long pants are recommended (most Moroccan men don't wear shorts)</li>
+                    <li>T-shirts are fine, but sleeveless shirts may be considered inappropriate</li>
+                    <li>Smart-casual attire for restaurants and nicer establishments</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>Safety Tips</h3>
+                <ul>
+                    <li>Keep valuables secure and out of sight</li>
+                    <li>Use a crossbody bag with a zipper rather than a backpack</li>
+                    <li>Be cautious with your phone and camera, especially in crowded areas</li>
+                    <li>Ask your hotel to call you a taxi rather than hailing one on the street</li>
+                    <li>Keep a copy of your passport and important documents separate from originals</li>
+                    <li>Stay in well-lit areas at night and avoid walking alone in unfamiliar neighborhoods</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>Common Scams to Avoid</h3>
+                <ul>
+                    <li><strong>Fake Guides</strong>: Politely decline unsolicited help and stick to official guides</li>
+                    <li><strong>Taxi Overcharging</strong>: Negotiate and agree on a price before getting in</li>
+                    <li><strong>"Free" Offers</strong>: Decline "free" henna tattoos or items handed to you</li>
+                    <li><strong>Restaurant Bill Inflation</strong>: Check menus for prices before ordering</li>
+                    <li><strong>Photography Charges</strong>: Ask permission before photographing people</li>
+                    <li><strong>Closed/Blocked Roads</strong>: Be skeptical if someone tells you a road or attraction is closed</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>Haggling and Shopping</h3>
+                <ul>
+                    <li>Haggling is expected in souks and markets, but not in fixed-price shops</li>
+                    <li>Start by offering 30-40% of the initial asking price</li>
+                    <li>Be prepared to walk away if you can't reach an agreeable price</li>
+                    <li>Remain friendly and respectful throughout the negotiation</li>
+                    <li>Only begin haggling if you're genuinely interested in purchasing</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>Cultural Etiquette</h3>
+                <ul>
+                    <li>Respect prayer times (five times daily)</li>
+                    <li>Remove shoes before entering mosques or someone's home</li>
+                    <li>Use your right hand for eating, greeting, and giving/receiving items</li>
+                    <li>Ask permission before photographing people</li>
+                    <li>Public displays of affection are frowned upon</li>
+                    <li>During Ramadan, avoid eating, drinking, or smoking in public during daylight hours</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>Health and Comfort</h3>
+                <ul>
+                    <li>Drink bottled water and avoid tap water</li>
+                    <li>Be cautious with street food; eat at busy stalls with high turnover</li>
+                    <li>Carry hand sanitizer and use it frequently</li>
+                    <li>Wear sunscreen, sunglasses, and a hat</li>
+                    <li>Stay hydrated and take breaks in shaded areas during hot days</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="maps">
+            <h2>Maps and Key Locations</h2>
+            
+            <h3>Interactive Map</h3>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.9027530016953!2d-7.992543485076941!3d31.631116981334192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee43ac3ee639%3A0xaf7e30a5084df1cc!2sJemaa%20el-Fnaa!5e0!3m2!1sen!2sus!4v1617795234875!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <h3>Key Locations</h3>
+            <ul>
+                <li><strong>Riad Elegancia</strong> - Located in the heart of the Marrakech medina</li>
+                <li><strong>La Maison Arabe</strong> - Located in the medina, a 3-minute walk from Riad Elegancia</li>
+                <li><strong>Jemaa el-Fnaa</strong> - The main square and heart of Marrakech</li>
+                <li><strong>Koutoubia Mosque</strong> - Located near Jemaa el-Fnaa</li>
+                <li><strong>Bahia Palace</strong> - Located in the southern part of the medina</li>
+                <li><strong>Jardin Majorelle</strong> - Located in the new city (Gueliz)</li>
+                <li><strong>Ben Youssef Madrasa</strong> - Located in the northern part of the medina</li>
+                <li><strong>Le Jardin Secret</strong> - Located in the heart of the medina</li>
+            </ul>
+            
+            <h3>Getting Around</h3>
+            <ul>
+                <li><strong>Walking</strong> - The best way to explore the medina</li>
+                <li><strong>Petit Taxis</strong> - Small red cars that operate within the city limits</li>
+                <li><strong>Grand Taxis</strong> - Larger white cars that operate between cities</li>
+                <li><strong>Hotel Transfers</strong> - Both Riad Elegancia and La Maison Arabe can arrange transportation</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Created with love for your special journey to Marrakech</p>
+        <p>Safe travels and best wishes for your proposal!</p>
+    </footer>
+</body>
+</html>
